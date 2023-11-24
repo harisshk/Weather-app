@@ -27,18 +27,18 @@ function HomeScreen(props) {
 
   const handleLocationClick = async location => {
     setIsLoading(true);
-    const data = await weatherCall(location?.city);
-    storeData('city', location?.city);
+    const data = await weatherCall(location?.name);
+    storeData('city', location?.name);
     setCurrentData(data);
     toggleSearch(false);
     setLocations([]);
     setIsLoading(false);
   };
   const handleSearch = async value => {
-    if (value.length > 2) {
+    if (value.length > 1) {
       const query = value.toLowerCase();
       const data = places.filter(place => {
-        const name = place.city.toLowerCase();
+        const name = place.name.toLowerCase();
         return name.includes(query);
       });
       setLocations(data);
@@ -50,9 +50,9 @@ function HomeScreen(props) {
     let myCity = await getData('city');
     let city = 'New Delhi';
     if (myCity) {
-      cityName = myCity;
+      city = myCity;
     }
-    handleLocationClick({city});
+    handleLocationClick({name:city});
   };
   useEffect(() => {
     handleFirstFetch();
@@ -114,7 +114,7 @@ function HomeScreen(props) {
                         }>
                         <MapPinIcon size={20} color={'gray'} />
                         <Text className="text-black text-lg ml-2">
-                          {loc.city}
+                          {loc.name}
                         </Text>
                       </TouchableOpacity>
                     );
@@ -126,7 +126,7 @@ function HomeScreen(props) {
             <View className="mx-4 flex justify-around flex-1 mb-2">
               {/* Location */}
               <Text className="text-white text-center text-2xl font-bold">
-                {currentData?.location?.name},
+                {currentData?.location?.name}, {" "}
                 <Text className="text-lg font-semibold text-gray-300">
                   {currentData?.location?.region}
                 </Text>

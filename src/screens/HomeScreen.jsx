@@ -59,13 +59,13 @@ function HomeScreen(props) {
   }, []);
   return (
     <View className="flex-1  relative">
+      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{flex: 1}}>
-        <StatusBar barStyle="default" />
         <Image
           blurRadius={70}
-          source={require('../assets/images/bg.png')}
+          source={require('../assets/images/bg.jpg')}
           className="absolute h-full w-full"
         />
         {isLoading ? (

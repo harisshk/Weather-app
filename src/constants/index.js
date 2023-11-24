@@ -1,4 +1,4 @@
-export const API_KEY = ""
+export const API_KEY = "0f1d0fdd06171f6d9cf17ddde31d2b2e"
 export const WEATHER_API_URL = "http://api.weatherstack.com/current"
 export const LOCATION_API_URL = "http://api.weatherstack.com/autocomplete"
 
